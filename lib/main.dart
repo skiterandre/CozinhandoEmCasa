@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import './telas/home/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -26,33 +27,8 @@ class MyApp extends StatelessWidget {
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
-      home: Scaffold(
-        body:SizedBox(
-          height: 300,
-          child:Card(
-            margin: EdgeInsets.all(16),
-            child: Column(
-              children: <Widget>[
-                Stack(
-                  children: <Widget>[
-                    Image.network("https://www.receitadevovo.com.br/gbau/sistema/receitas/img/bolo-de-trigo-fofinho.jpg",fit: BoxFit.fill,height: 268,),
-                    Positioned(
-                      bottom: 10,
-                      left: 10,
-                      child:Text("Bolo de Laranja",style:TextStyle(fontSize: 20) ,)
-                    )
-                  ],
-                )
-              ],
-            ),
-          ),
-        ) ,
-        appBar: AppBar(
-            title: Text("Cozinhando em casa")
-        ),
-      )
+      home: Home()
     );
   }
 }
-
 
