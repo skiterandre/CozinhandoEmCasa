@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
+import '../../modelos/receita.dart';
 
 class Detalhes extends StatelessWidget{
+
+
+  final Receita receita;
+
+  Detalhes({Key Key,@required this.receita}):super(key: Key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,15 +15,15 @@ class Detalhes extends StatelessWidget{
 
   Widget _construirDetalhes(){
     return Scaffold(
-      body: Column(
+      body: ListView(
         children: <Widget>[
-          _construirImagemDetalhes("assets/images/ratatouille.jpg"),
-          _construirTituloDetalhes("Ratatouille"),
-          _construirLinhaIconesDetalhes("2-3 porções", "50min"),
+          _construirImagemDetalhes(receita.foto),
+          _construirTituloDetalhes(receita.titulo),
+          _construirLinhaIconesDetalhes("${receita.porcoes} porções", receita.tempoPreparo),
           _construirSubtituloDetalhes("Ingredientes"),
-          _construirTextoDetalhes("Aqui serão exibidos os ingredientes desta receita"),
+          _construirTextoDetalhes(receita.ingredientes),
           _construirSubtituloDetalhes("Modo de Preparo"),
-          _construirTextoDetalhes("Aqui será exibido o modo de Preparo desta receita")
+          _construirTextoDetalhes(receita.modoPreparo)
         ],
       ),
       appBar: _construirAppBar(),
@@ -25,7 +31,9 @@ class Detalhes extends StatelessWidget{
   }
 
   Widget _construirTituloDetalhes(titulo){
-    return Text(titulo, style: TextStyle(color: Colors.deepOrange, fontSize: 30));
+    return Center(
+      child: Text(titulo, style: TextStyle(color: Colors.deepOrange, fontSize: 30)),
+    );
   }
 
   Widget _construirImagemDetalhes(imagem){
@@ -53,11 +61,16 @@ class Detalhes extends StatelessWidget{
   }
 
   Widget _construirSubtituloDetalhes(subtitulo){
-    return Text(subtitulo, style: TextStyle(fontSize: 20),);
+    return Center(
+      child: Text(subtitulo, style: TextStyle(fontSize: 20)),
+    );
   }
 
   Widget _construirTextoDetalhes(texto){
-    return Text(texto);
+    return Container(
+      padding: EdgeInsets.all(16),
+      child: Text(texto),
+    );
   }
 
   Widget _construirAppBar(){
